@@ -1,22 +1,37 @@
-# Airport-baggage-routing-problem-using-Dijkstra-s-Algorithm
+## Design/Coding Exercise
+* We have three design problems outlined in this document below. We require you to provide a solution to `only one` of these problems. However, you may choose to solve more than one if you so wish.
+*	We are flexible in your choice of target runtime/language. However, do note that a majority of our production infrastructure makes use of the JRE/.NET runtimes.
+*	You may not use any external libraries to solve the problem itself, but you may use external libraries or tools for building and/or testing purposes.
 
-Airport has decided to give an automated baggage system another shot. The hardware and tracking systems from the previous attempt are still in place, they just need a system to route the baggage.  The system will route baggage checked, connecting, and terminating in Denver.
- 
+## How we evaluate your code
+We will be looking at a number of things including the design aspect of your solution and your object oriented programming skills. Whilst these are small problems, we expect you to submit what you believe is “production-quality” code that you would be able to run, maintain and evolve. You do not need to “gold plate” your solution, but we are looking for something more than a bare-bones algorithm. You should submit code that you would be happy to produce in a real project, or that you would be happy to receive from a colleague. We prefer code submissions that exhibit loose coupling, a high degree of encapsulation with cyclomatic complexity distributed relatively evenly. A quick `README` explaining how to run your program will no doubt help.  
+
+### Problem 1: Airport Baggage
+
+Denver International Airport has decided to give an automated baggage system another shot. The hardware and tracking systems from the previous attempt are still in place, they just need a system to route the baggage.  The system will route baggage checked, connecting, and terminating in Denver.
+
 You have been asked to implement a system that will route bags to their flights or the proper baggage claim.  The input describes the airport conveyor system, the departing flights, and the bags to be routed.  The output is the optimal routing to get bags to their destinations.  Bags with a flight id of “ARRIVAL” are terminating in Denver are routed to Baggage Claim.
- 
+
 Input: The input consists of several sections.  The beginning of each section is marked by a line starting: “# Section:”
+```
 Section 1: A weighted bi-directional graph describing the conveyor system.
 Format: <Node 1> <Node 2> <travel_time>
-Section 2: Departure list
-           Format: <flight_id> <flight_gate> <destination> <flight_time>
-Section 3: Bag list
-           Format: <bag_number> <entry_point> <flight_id>
- 
+
+Section 2: Departure list Format:
+<flight_id> <flight_gate> <destination> <flight_time>
+Section 3: Bag list Format:
+<bag_number> <entry_point> <flight_id>
+```
+
 Output: The optimized route for each bag
+```
 <Bag_Number> <point_1> <point_2> [<point_3>, …] : <total_travel_time>
+```
+
 The output should be in the same order as the Bag list section of the input.
- 
+
 Example Input:
+```
 # Section: Conveyor System
 Concourse_A_Ticketing A5 5
 A5 BaggageClaim 5
@@ -45,9 +60,13 @@ UA18 A5 LAX 10:15
 0003 A2 UA10
 0004 A8 UA18
 0005 A7 ARRIVAL
+```
+
 Example Output:
+```
 0001 Concourse_A_Ticketing A5 A1 : 11
 0002 A5 A1 A2 A3 A4 : 9
 0003 A2 A1 : 1
 0004 A8 A9 A10 A5 : 6
 0005 A7 A8 A9 A10 A5 BaggageClaim : 12
+```
